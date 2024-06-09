@@ -1,25 +1,26 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:object_detection/screens/camera.dart';
+import 'package:object_detection/utils/app_string.dart';
 import 'package:object_detection/utils/global.dart';
 import 'package:tensorflow_lite_flutter/tensorflow_lite_flutter.dart';
 
 import 'dart:math' as math;
 
-import 'bounding_box.dart';
+import 'components/bounding_box.dart';
 
 const String ssd = "SSDMobileNet";
 
-class ObjectScreen extends StatefulWidget {
+class ObjectDetectionScreen extends StatefulWidget {
   final List<CameraDescription> cameras;
 
-  const ObjectScreen(this.cameras, {super.key});
+  const ObjectDetectionScreen(this.cameras, {super.key});
 
   @override
-  State<ObjectScreen> createState() => _ObjectScreenState();
+  State<ObjectDetectionScreen> createState() => _ObjectDetectionScreenState();
 }
 
-class _ObjectScreenState extends State<ObjectScreen> {
+class _ObjectDetectionScreenState extends State<ObjectDetectionScreen> {
   List<dynamic> _recognitions = [];
   int _imageHeight = 0;
   int _imageWidth = 0;
@@ -69,7 +70,7 @@ class _ObjectScreenState extends State<ObjectScreen> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: const Text(
-          "Object Detection",
+          AppStrings.objectDetection,
           style: TextStyle(
             fontStyle: FontStyle.normal,
             color: Colors.white,
